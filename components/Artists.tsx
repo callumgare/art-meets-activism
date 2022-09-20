@@ -13,23 +13,12 @@ type Props = {
 const style = css`
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  padding: 0;
 
   li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
-
-    @media (min-width: 1024px) {
-      gap: 2em;
-      flex-direction: row;
-
-      &:nth-of-type(even) {
-        flex-direction: row-reverse;
-      }
-    }
+    list-style-type: none;
+    margin: 1.4em 0 2em;
 
     &:has(.anchor:target) {
       background-color: var(--colour-background-accent);
@@ -41,14 +30,11 @@ const style = css`
     }
 
     .image {
-      margin: 0.8rem 0;
-      max-height: 400px;
-      width: auto;
+      margin: 1em 0;
+      max-height: 30em;
       max-width: 100%;
-
-      @media (min-width: 1024px) {
-        max-width: 70%;
-      }
+      width: auto;
+      height: auto;
 
       &.noImage {
         height: 400px;
@@ -58,13 +44,31 @@ const style = css`
       }
     }
 
-    .name {
-      font-weight: bold;
-      font-size: 1.5em;
+    .info {
+      .name {
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .bio {
+        p {
+          margin: 0.8rem 0;
+        }
+      }
     }
-    .bio {
-      p {
-        margin: 0.8rem 0;
+
+    @media (min-width: 800px) {
+      .image {
+        float: left;
+        margin: 0.7em 2em 2em 0;
+        max-width: 50%;
+      }
+
+      &:nth-of-type(even) {
+        .image {
+          float: right;
+          margin: 1em 0 2em 2em;
+        }
       }
     }
   }
@@ -88,7 +92,7 @@ export default function Artists({ artists }: Props) {
             ) : (
               <div className="image noImage" />
             )}
-            <div>
+            <div className="info">
               <div className="name">{artist.title}</div>
               <div className="bio" dangerouslySetInnerHTML={{ __html: artist.biography }} />
               {!!artist.artworks.length && (
