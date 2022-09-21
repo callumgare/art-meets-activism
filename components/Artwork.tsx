@@ -9,6 +9,12 @@ type Props = {
 
 const style = css`
   position: relative;
+
+  img {
+    max-height: 400px;
+    object-fit: cover;
+  }
+
   .info {
     position: absolute;
     top: 50%;
