@@ -130,7 +130,7 @@ export default function ArtGalleryArtwork({ artwork, className, isVisible }: Pro
   const startingPrice = artwork.startingPrice === 0 ? 'None' : `$${artwork.startingPrice}`
   const statementOverflowHeight = 450
   const [statementOverflowHidden, setStatementOverflowHidden] = useState(false)
-  const rootElm = useRef<HTMLElement>(null)
+  const rootElm = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const statementElm = rootElm.current?.querySelector('.statement')

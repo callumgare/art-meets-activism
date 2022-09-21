@@ -51,6 +51,9 @@ export default function Artworks({ artworks }: Props) {
         artworks={artworks}
         initialArtwork={galleryInitialArtwork}
       />
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* 
+      // @ts-ignore inert not yet supported https://github.com/DefinitelyTyped/DefinitelyTyped/pull/60822 */}
       <ul css={style} inert={artGalleryIsOpen ? '' : null}>
         {artworks.map((artwork) => (
           <li key={artwork.id}>
