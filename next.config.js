@@ -15,7 +15,6 @@ module.exports = {
       '2.gravatar.com',
       'secure.gravatar.com',
     ],
-    deviceSizes: [3840],
   },
   eslint: {
     dirs: ['components', 'hooks', 'lib', 'pages', 'schema', 'styles', 'utils'],

@@ -45,7 +45,13 @@ export default function Artworks({ artworks }: Props) {
 
   return (
     <>
-      <ul css={style}>
+      <ArtGallery
+        open={artGalleryIsOpen}
+        onCloseRequest={() => setArtGalleryIsOpen(false)}
+        artworks={artworks}
+        initialArtwork={galleryInitialArtwork}
+      />
+      <ul css={style} inert={artGalleryIsOpen ? '' : null}>
         {artworks.map((artwork) => (
           <li key={artwork.id}>
             <button className="openInGallery" onClick={() => openGallery(artwork)}>
@@ -54,13 +60,6 @@ export default function Artworks({ artworks }: Props) {
           </li>
         ))}
       </ul>
-
-      <ArtGallery
-        open={artGalleryIsOpen}
-        onCloseRequest={() => setArtGalleryIsOpen(false)}
-        artworks={artworks}
-        initialArtwork={galleryInitialArtwork}
-      />
     </>
   )
 }

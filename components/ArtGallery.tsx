@@ -17,8 +17,7 @@ type Props = {
 }
 
 const style = css`
-  width: 200px;
-  height: 200px;
+  z-index: 1;
   position: relative;
 
   &.hidden {
@@ -181,16 +180,13 @@ const style = css`
         animation-duration: 0;
       }
 
-      .wallContents/*,
-    ::after*/ {
+      .wallContents {
         position: absolute;
         top: 0;
         width: 100%;
         transform: translateX(-50%);
         left: 50%;
-      }
-
-      .wallContents {
+        padding: 1px; /* compensate for the fact that the walls slightly overlap to avoid rendering errors */
         height: 100%;
         /* spotlight effect */
         &::after {
@@ -646,11 +642,21 @@ export default function ArtGallery({ open, onCloseRequest, artworks, initialArtw
               {artworks[artworkIndex] && (
                 <>
                   <div className="wallContents" {...dragBindProps(unwrappedArtworkIndex)}>
-                    <ArtGalleryArtwork artwork={artworks[artworkIndex]} className="artwork" />
+                    <ArtGalleryArtwork
+                      key={artworkIndex}
+                      artwork={artworks[artworkIndex]}
+                      className="artwork"
+                      isVisible={!isHidden}
+                    />
                   </div>
                   {enableReflections && (
                     <div className="wallContents floor-reflection">
-                      <ArtGalleryArtwork artwork={artworks[artworkIndex]} className="artwork" />
+                      <ArtGalleryArtwork
+                        key={artworkIndex}
+                        artwork={artworks[artworkIndex]}
+                        className="artwork"
+                        isVisible={!isHidden}
+                      />
                     </div>
                   )}
                 </>
