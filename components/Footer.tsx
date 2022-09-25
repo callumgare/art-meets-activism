@@ -25,9 +25,9 @@ export default function Footer() {
     <footer css={style}>
       <Container className="container">
         <div className="acknowledgement">
-          RAC and BASP respectfully acknowledges the Traditional Owners of the land, the Wurundjeri Woi Wurrung and
-          Bunurong Boon Wurrung peoples of the Eastern Kulin and pays respect to their Elders past, present and
-          emerging.
+          RAC-Vic and BASP respectfully acknowledge the Traditional Custodians of the land of the Wurundjeri Woi-wurrung
+          and Bunurong Peoples of the Kulin Nation and we recognise their enduring connection to land, waters and
+          culture. We pay our respect to Elders past and present.
         </div>
       </Container>
     </footer>

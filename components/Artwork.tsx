@@ -1,10 +1,10 @@
 import Image from 'next/future/image'
 import * as React from 'react'
 import { css } from '@emotion/react'
-import { Artwork } from '@/schema/artwork'
+import { Artwork as ArtworkType } from '@/schema/artwork'
 
 type Props = {
-  artwork: Artwork
+  artwork: ArtworkType
 }
 
 const style = css`
@@ -49,7 +49,7 @@ const style = css`
   }
 `
 
-export default function Artworks({ artwork }: Props) {
+export default function Artwork({ artwork }: Props) {
   return (
     <div css={style}>
       <Image
