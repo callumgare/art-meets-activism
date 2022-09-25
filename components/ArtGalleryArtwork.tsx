@@ -127,7 +127,7 @@ const style = css`
 `
 
 export default function ArtGalleryArtwork({ artwork, className, isVisible }: Props) {
-  const startingPrice = artwork.startingPrice === 0 ? 'None' : `$${artwork.startingPrice}`
+  const startingPrice = 'TBA'
   const statementOverflowHeight = 450
   const [statementOverflowHidden, setStatementOverflowHidden] = useState(false)
   const rootElm = useRef<HTMLDivElement>(null)
