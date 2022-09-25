@@ -35,13 +35,6 @@ const style = css`
       max-width: 100%;
       width: auto;
       height: auto;
-
-      &.noImage {
-        height: 400px;
-        background-color: #cdcdcd;
-        width: auto;
-        aspect-ratio: auto 300 / 400;
-      }
     }
 
     .info {
@@ -81,7 +74,7 @@ export default function Artists({ artists }: Props) {
         <React.Fragment key={artist.id}>
           <li>
             <div className="anchor" id={artist.slug} />
-            {artist.image ? (
+            {artist.image && (
               <Image
                 className="image"
                 src={artist.image.fileUrl}
@@ -89,8 +82,6 @@ export default function Artists({ artists }: Props) {
                 height={artist.image.height || 1}
                 alt={artist.image.altText}
               />
-            ) : (
-              <div className="image noImage" />
             )}
             <div className="info">
               <div className="name">{artist.title}</div>
