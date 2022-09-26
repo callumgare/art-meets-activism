@@ -16,6 +16,7 @@ const style = css`
   grid-template-columns: repeat(auto-fill, minmax(min(250px, calc(100vw - 4rem)), 1fr));
   gap: 2em;
   align-items: center;
+  justify-items: center;
 
   .openInGallery {
     transition: transform 0.15s ease-in-out;
