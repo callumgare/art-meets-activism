@@ -86,6 +86,10 @@ const style = css`
               width: 100%;
               height: 70px;
               background: linear-gradient(transparent, var(--colour-background));
+
+              @media (prefers-color-scheme: dark) {
+                background: linear-gradient(transparent, #474c4e);
+              }
             }
           }
           .showMoreStatement {
