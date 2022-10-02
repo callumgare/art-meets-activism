@@ -36,7 +36,8 @@ export default function Index({ siteMenu, siteInfo, artworks }: Props) {
         <SiteHeader siteInfo={siteInfo} siteMenu={siteMenu} />
         <div className="description">
           Leading artists have donated works to highlight the need to treat refugees and asylum seekers with dignity and
-          compassion. All funds raised will be shared between the{' '}
+          compassion. Three of those artists have refugee experience and will receive 100% of the sale price for their
+          artwork. All other funds raised will be shared between the{' '}
           <a href="https://basp.org.au/">Brigidine Asylum Seekers Project (BASP)</a> and the{' '}
           <a href="https://rac-vic.org/">Refugee Action Collective - Victoria (RAC - VIC)</a>.
         </div>
