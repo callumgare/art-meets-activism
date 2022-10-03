@@ -21,6 +21,10 @@ export default function Meta({ siteInfo }: Props) {
       <meta name="theme-color" media="(prefers-color-scheme: dark)" key="dark-mode" content="#181a1b" />
       <meta name="description" content={siteInfo.description} />
       <meta property="og:image" content="/landscape-site-image.jpg" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={siteInfo.title} />
+      <meta name="twitter:description" content={siteInfo.description} />
+      <meta name="twitter:image" content="/landscape-site-image.jpg" />
     </Head>
   )
 }
