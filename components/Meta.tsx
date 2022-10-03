@@ -20,7 +20,7 @@ export default function Meta({ siteInfo }: Props) {
       <meta name="theme-color" media="(prefers-color-scheme: light)" key="light-mode" content="#f9f7f5" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" key="dark-mode" content="#181a1b" />
       <meta name="description" content={siteInfo.description} />
-      <meta property="og:image" content="/site-title-image" />
+      <meta property="og:image" content="/landscape-site-image.jpg" />
     </Head>
   )
 }
