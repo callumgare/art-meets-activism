@@ -88,7 +88,12 @@ export async function getSiteInfo(): Promise<SiteInfo> {
       }
     }
   `)
-  return siteInfoSchema.parse(data?.generalSettings)
+  return siteInfoSchema.parse({
+    title: data?.generalSettings?.title,
+    description: data?.generalSettings?.description,
+    url: 'https://artmeetsactivism.com', // Hardcode for now until this can be pulled from the CMS https://github.com/wp-graphql/wp-graphql/issues/2520
+    cmsUrl: data?.generalSettings?.url,
+  })
 }
 
 export async function getPrimaryMenu(): Promise<MenuItem[]> {
