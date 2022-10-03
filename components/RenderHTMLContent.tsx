@@ -88,6 +88,10 @@ const style = css`
     line-height: 1.25rem;
   }
 
+  iframe {
+    margin: auto;
+  }
+
   img {
     margin: auto;
   }
