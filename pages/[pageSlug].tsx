@@ -35,7 +35,7 @@ export default function Page({ page, siteInfo, siteMenu, artists }: Props) {
           <Head>
             <title>{`${page.title} | ${siteInfo.title}`}</title>
           </Head>
-          <RenderHTMLContent artists={artists}>{page.content}</RenderHTMLContent>
+          <RenderHTMLContent artists={artists}>{page.content || ''}</RenderHTMLContent>
         </article>
       </Container>
     </Layout>
