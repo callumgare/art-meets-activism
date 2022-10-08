@@ -161,14 +161,18 @@ export async function getArtworks(): Promise<Artwork[]> {
     artists: wpArtwork.artwork.artist,
   }))
 
-  const parsedArtworks: Artwork[] = artworks.map((artwork: Artwork) => {
-    try {
-      return artworkSchema.parse(artwork)
-    } catch (error) {
-      console.info(artwork)
-      throw error
-    }
-  })
+  const parsedArtworks: Artwork[] = artworks
+    .map((artwork: Artwork) => {
+      try {
+        return artworkSchema.parse(artwork)
+      } catch (error) {
+        console.info(artwork)
+        throw error
+      }
+    })
+    .sort((artworkA: Artwork, artworkB: Artwork) =>
+      artworkA.artists[0]?.title.localeCompare(artworkB.artists[0]?.title)
+    )
   return parsedArtworks
 }
 
@@ -234,6 +238,8 @@ export async function getArtists(): Promise<Artist[]> {
       })),
   }))
 
-  const parsedArtists: Artist[] = artists.map(artistSchema.parse)
+  const parsedArtists: Artist[] = artists
+    .map(artistSchema.parse)
+    .sort((artistA: Artist, artistB: Artist) => artistA.title.localeCompare(artistB.title))
   return parsedArtists
 }
