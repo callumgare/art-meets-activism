@@ -166,8 +166,7 @@ export default function ArtGalleryArtwork({ artwork, className, isVisible }: Pro
       </div>
       <div className="labelContainer">
         <div className="label">
-          {/* <pre>{JSON.stringify(artwork, null, 2)}</pre> */}
-          {artwork.title !== 'Untitled' && <div className="title">{artwork.title}</div>}
+          <div className="title">{artwork.title}</div>
           <div className="artists">
             {artwork.artists.map((artist, index) => (
               <Fragment key={artist.id}>

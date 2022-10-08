@@ -59,7 +59,7 @@ export default function Artwork({ artwork }: Props) {
         alt={artwork.image.altText}
       />
       <div className="info">
-        {artwork.title !== 'Untitled' && <span className="title">{artwork.title}</span>}
+        <span className="title">{artwork.title}</span>
         <span className="joiner"> by </span>
         {artwork.artists.map((artist, index) => (
           <React.Fragment key={artist.id}>
