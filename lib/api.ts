@@ -170,9 +170,7 @@ export async function getArtworks(): Promise<Artwork[]> {
         throw error
       }
     })
-    .sort((artworkA: Artwork, artworkB: Artwork) =>
-      artworkA.artists[0]?.title.localeCompare(artworkB.artists[0]?.title)
-    )
+    .sort((artworkA: Artwork, artworkB: Artwork) => sortByName(artworkA.artists[0]?.title, artworkB.artists[0]?.title))
   return parsedArtworks
 }
 
@@ -240,6 +238,12 @@ export async function getArtists(): Promise<Artist[]> {
 
   const parsedArtists: Artist[] = artists
     .map(artistSchema.parse)
-    .sort((artistA: Artist, artistB: Artist) => artistA.title.localeCompare(artistB.title))
+    .sort((artistA: Artist, artistB: Artist) => sortByName(artistA.title, artistB.title))
   return parsedArtists
+}
+
+function sortByName(nameA: string, nameB: string) {
+  const normalisedNameA = nameA.replace(/^Dr\s+/i, '')
+  const normalisedNameB = nameB.replace(/^Dr\s+/i, '')
+  return normalisedNameA.localeCompare(normalisedNameB)
 }
