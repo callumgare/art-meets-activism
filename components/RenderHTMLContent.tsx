@@ -5,9 +5,10 @@ import Image from 'next/future/image'
 
 import Artists from '@/components/Artists'
 import { HTMLAttributeReferrerPolicy } from 'react'
+import { Artwork } from '@/schema/artwork'
+import Artworks from './Artworks'
 
 const style = css`
-  font-size: 1.125rem; /* 18px */
   line-height: 1.75rem; /* 28px */
   line-height: 1.625;
 
@@ -130,9 +131,10 @@ const style = css`
 type Props = {
   children: string
   artists?: Artist[]
+  artworks?: Artwork[]
 }
 
-export default function RenderHTMLContent({ children, artists }: Props) {
+export default function RenderHTMLContent({ children, artists, artworks }: Props) {
   const modifyTags = (node: DOMNode) => {
     if (node.type && node.type === 'tag' && 'name' in node) {
       if (node.name === 'img') {
@@ -178,6 +180,9 @@ export default function RenderHTMLContent({ children, artists }: Props) {
       // our component.
       if (innerText === '[artists]' && artists) {
         return <Artists artists={artists} />
+      }
+      if (innerText === '[artworks]' && artworks) {
+        return <Artworks artworks={artworks} />
       }
     }
 

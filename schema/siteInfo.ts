@@ -5,6 +5,8 @@ export const siteInfoSchema = z.object({
   description: z.string(),
   url: z.string(),
   cmsUrl: z.string(),
+  footerText: z.string(),
+  headerInfoText: z.string(),
 })
 
 export type SiteInfo = z.infer<typeof siteInfoSchema>

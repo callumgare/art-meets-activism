@@ -78,6 +78,29 @@ export async function getPageBySlug(slug: string): Promise<Page> {
   return pageSchema.parse(data?.page)
 }
 
+export async function getFrontPage(): Promise<Page> {
+  const data = await fetchAPI(`
+    {
+      pages(first: 10000) {
+        edges {
+          node {
+            title
+            slug
+            content
+            isFrontPage
+          }
+        }
+      }
+    }
+  `)
+  const wpFrontPage = data?.pages.edges.find((wpPage: GraphGLResult) => wpPage.node.isFrontPage)
+  return pageSchema.parse({
+    title: wpFrontPage.node.title,
+    slug: wpFrontPage.node.slug,
+    content: wpFrontPage.node.content,
+  })
+}
+
 export async function getSiteInfo(): Promise<SiteInfo> {
   const data = await fetchAPI(`
     {
@@ -86,6 +109,14 @@ export async function getSiteInfo(): Promise<SiteInfo> {
         description
         url
       }
+      allSiteInfo {
+        nodes {
+          SiteInfo {
+            footerText
+            headerInfoText
+          }
+        }
+      }
     }
   `)
   return siteInfoSchema.parse({
@@ -93,6 +124,8 @@ export async function getSiteInfo(): Promise<SiteInfo> {
     description: data?.generalSettings?.description,
     url: 'https://art-meets-activism-callumgare.vercel.app', // Hardcode for now until this can be pulled from the CMS https://github.com/wp-graphql/wp-graphql/issues/2520
     cmsUrl: data?.generalSettings?.url,
+    footerText: data?.allSiteInfo.nodes?.[0].SiteInfo.footerText,
+    headerInfoText: data?.allSiteInfo.nodes?.[0].SiteInfo.headerInfoText,
   })
 }
 

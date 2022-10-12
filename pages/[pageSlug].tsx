@@ -16,6 +16,7 @@ const style = css`
   article {
     max-width: 900px;
     margin: 4rem auto;
+    font-size: 1.125rem; /* 18px */
   }
 `
 

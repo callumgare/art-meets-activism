@@ -4,6 +4,7 @@ import { css } from '@emotion/react'
 import useActiveLinkCheck from '@/hooks/useActiveLinkCheck'
 import { SiteInfo } from '@/schema/siteInfo'
 import { MenuItem } from '@/schema/menuItem'
+import RenderHTMLContent from './RenderHTMLContent'
 
 const style = css`
   a {
@@ -31,8 +32,13 @@ const style = css`
     }
     .details {
       flex: 1 1 auto;
-      font-size: clamp(1.1em, 2vw, 1.8em);
+      font-size: clamp(1.1em, 2vw, 1.5em);
+      max-width: 420px;
       text-align: right;
+
+      p {
+        margin: 0;
+      }
     }
     @media (max-width: 500px) {
       flex-direction: column;
@@ -79,9 +85,7 @@ export default function SiteHeader({ siteInfo, siteMenu }: Props) {
           <div className="subtitle">{siteInfo.description}</div>
         </div>
         <div className="details">
-          Saturday 12th of November, 2pm
-          <br />
-          at the <a href="https://g.page/MeatMarketMelb">Meat Market, Melbourne</a>.
+          <RenderHTMLContent>{siteInfo.headerInfoText || ''}</RenderHTMLContent>
         </div>
       </div>
       <nav>

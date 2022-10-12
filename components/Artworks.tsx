@@ -18,6 +18,10 @@ const style = css`
   align-items: center;
   justify-items: center;
 
+  li {
+    list-style-type: none;
+  }
+
   .openInGallery {
     transition: transform 0.15s ease-in-out;
     &:hover {

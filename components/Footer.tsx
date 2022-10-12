@@ -1,5 +1,7 @@
 import Container from '@/components/Container'
+import { SiteInfo } from '@/schema/siteInfo'
 import { css } from '@emotion/react'
+import RenderHTMLContent from './RenderHTMLContent'
 
 const style = css`
   background: var(--colour-background-accent);
@@ -7,7 +9,7 @@ const style = css`
 
   .container {
     display: flex;
-    padding: 3em 1.25rem;
+    padding: 1.5em 1.25rem;
     width: 100%;
   }
 
@@ -20,14 +22,16 @@ const style = css`
   }
 `
 
-export default function Footer() {
+type Props = {
+  siteInfo: SiteInfo
+}
+
+export default function Footer({ siteInfo }: Props) {
   return (
     <footer css={style}>
       <Container className="container">
         <div className="acknowledgement">
-          RAC-Vic and BASP respectfully acknowledge the Traditional Custodians of the land of the Wurundjeri Woi-wurrung
-          and Bunurong Peoples of the Kulin Nation and we recognise their enduring connection to land, waters and
-          culture. We pay our respect to Elders past and present.
+          <RenderHTMLContent>{siteInfo.footerText || ''}</RenderHTMLContent>
         </div>
       </Container>
     </footer>

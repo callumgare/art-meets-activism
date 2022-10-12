@@ -30,7 +30,7 @@ export default function Layout({ siteInfo, children, className = '' }: Props) {
       <AnalyticsScript />
       <div css={style} className={className}>
         <main>{children}</main>
-        <Footer />
+        <Footer siteInfo={siteInfo} />
       </div>
     </>
   )
