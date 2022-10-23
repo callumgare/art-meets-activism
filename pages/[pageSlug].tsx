@@ -15,7 +15,7 @@ import { MenuItem } from '@/schema/menuItem'
 const style = css`
   article {
     max-width: 900px;
-    margin: 4rem auto;
+    margin: 3rem auto;
     font-size: 1.125rem; /* 18px */
   }
 `

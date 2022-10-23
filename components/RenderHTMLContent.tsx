@@ -16,8 +16,8 @@ const style = css`
   ul,
   ol,
   blockquote {
-    margin-top: 1.5rem; /* 24px */
-    margin-bottom: 1.5rem; /* 24px */
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
 
   a {
@@ -49,24 +49,26 @@ const style = css`
   }
 
   h2 {
-    margin-top: 3rem; /* 48px */
-    margin-bottom: 1rem; /* 16px */
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
     font-size: 1.875rem; /* 30px */
     line-height: 2.25rem; /* 36px */
     line-height: 1.375;
+    font-weight: bold;
   }
 
   h3 {
-    margin-bottom: 1rem; /* 16px */
     margin-top: 2rem;
+    margin-bottom: 0.5rem;
     font-size: 1.5rem; /* 24px */
     line-height: 2rem; /* 32px */
     line-height: 1.375;
+    font-weight: bold;
   }
 
   h4 {
-    margin-bottom: 1rem; /* 16px */
     margin-top: 1.5rem; /* 24px */
+    margin-bottom: 0.5rem;
     font-size: 1.25rem; /* 20px */
     line-height: 1.75rem; /* 28px */
     line-height: 1.375;
