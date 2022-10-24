@@ -193,7 +193,7 @@ export default function ArtGalleryArtwork({ artwork, className, isVisible }: Pro
             </div>
           )}
           <div>
-            <div className="auctionType">To be auction via {artwork.auctionType} bidding</div>
+            <div className="auctionType">To be auctioned via {artwork.auctionType} bidding</div>
             <div className="startingPrice">Starting price: {startingPrice}</div>
           </div>
         </div>
