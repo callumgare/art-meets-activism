@@ -2,11 +2,13 @@ import { Artist } from '@/schema/artist'
 import { css } from '@emotion/react'
 import parse, { DOMNode } from 'html-react-parser'
 import Image from 'next/future/image'
+import { formatDistance, startOfDay, compareAsc } from 'date-fns'
 
 import Artists from '@/components/Artists'
 import { HTMLAttributeReferrerPolicy } from 'react'
 import { Artwork } from '@/schema/artwork'
 import Artworks from './Artworks'
+import { SiteInfo } from '@/schema/siteInfo'
 
 const style = css`
   line-height: 1.75rem; /* 28px */
@@ -134,9 +136,10 @@ type Props = {
   children: string
   artists?: Artist[]
   artworks?: Artwork[]
+  siteInfo?: SiteInfo
 }
 
-export default function RenderHTMLContent({ children, artists, artworks }: Props) {
+export default function RenderHTMLContent({ children, artists, artworks, siteInfo }: Props) {
   const modifyTags = (node: DOMNode) => {
     if (node.type && node.type === 'tag' && 'name' in node) {
       if (node.name === 'img') {
@@ -185,6 +188,19 @@ export default function RenderHTMLContent({ children, artists, artworks }: Props
       }
       if (innerText === '[artworks]' && artworks) {
         return <Artworks artworks={artworks} />
+      }
+      if (innerText.includes('[countDownToEventDate]') && siteInfo) {
+        const comparedDates = compareAsc(startOfDay(new Date()), startOfDay(new Date(siteInfo.eventDate)))
+        let timeRemainingToEventDate = ''
+        if (comparedDates === -1) {
+          const durationFormatted = formatDistance(startOfDay(new Date()), startOfDay(new Date(siteInfo.eventDate)))
+          timeRemainingToEventDate = `${durationFormatted} until the auction`
+        } else if (comparedDates === 0) {
+          timeRemainingToEventDate = `The auction is happening today`
+        } else if (comparedDates === 1) {
+          timeRemainingToEventDate = 'The auction has now finished'
+        }
+        return <p>{innerText.replace('[countDownToEventDate]', timeRemainingToEventDate)}</p>
       }
     }
 

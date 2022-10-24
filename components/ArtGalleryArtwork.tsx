@@ -56,7 +56,7 @@ const style = css`
       max-height: 100%;
       display: flex;
       flex-direction: column;
-      gap: 1em;
+      gap: 0.5em;
       max-width: max-content;
       background-color: var(--colour-background);
       padding: 1em;
@@ -94,6 +94,8 @@ const style = css`
           }
           .showMoreStatement {
             font-weight: bold;
+            margin: 0 auto 0.5em;
+            display: block;
           }
         }
 

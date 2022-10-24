@@ -7,6 +7,7 @@ export const siteInfoSchema = z.object({
   cmsUrl: z.string(),
   footerText: z.string(),
   headerInfoText: z.string(),
+  eventDate: z.string(),
 })
 
 export type SiteInfo = z.infer<typeof siteInfoSchema>

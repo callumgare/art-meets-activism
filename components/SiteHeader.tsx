@@ -85,7 +85,7 @@ export default function SiteHeader({ siteInfo, siteMenu }: Props) {
           <div className="subtitle">{siteInfo.description}</div>
         </div>
         <div className="details">
-          <RenderHTMLContent>{siteInfo.headerInfoText || ''}</RenderHTMLContent>
+          <RenderHTMLContent siteInfo={siteInfo}>{siteInfo.headerInfoText || ''}</RenderHTMLContent>
         </div>
       </div>
       <nav>

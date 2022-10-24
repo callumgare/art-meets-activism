@@ -75,6 +75,7 @@ export async function getPageBySlug(slug: string): Promise<Page> {
       },
     }
   )
+
   return pageSchema.parse(data?.page)
 }
 
@@ -114,18 +115,21 @@ export async function getSiteInfo(): Promise<SiteInfo> {
           SiteInfo {
             footerText
             headerInfoText
+            eventDate
           }
         }
       }
     }
   `)
+
   return siteInfoSchema.parse({
     title: data?.generalSettings?.title,
     description: data?.generalSettings?.description,
-    url: 'https://art-meets-activism-callumgare.vercel.app', // Hardcode for now until this can be pulled from the CMS https://github.com/wp-graphql/wp-graphql/issues/2520
+    url: 'https://artmeetsactivism.com', // Hardcode for now until this can be pulled from the CMS https://github.com/wp-graphql/wp-graphql/issues/2520
     cmsUrl: data?.generalSettings?.url,
     footerText: data?.allSiteInfo.nodes?.[0].SiteInfo.footerText,
     headerInfoText: data?.allSiteInfo.nodes?.[0].SiteInfo.headerInfoText,
+    eventDate: data?.allSiteInfo.nodes?.[0].SiteInfo.eventDate,
   })
 }
 
