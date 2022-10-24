@@ -9,6 +9,7 @@ export const artworkSchema = z.object({
   image: Image,
   startingPrice: z.number(),
   statement: z.string().nullable(),
+  auctionType: z.enum(['public', 'silent']),
   artists: z.array(
     z.object({
       id: z.string(),

@@ -103,6 +103,9 @@ const style = css`
           margin: 0.9rem 0;
         }
       }
+      .auctionType {
+        font-weight: bold;
+      }
     }
   }
 
@@ -189,7 +192,10 @@ export default function ArtGalleryArtwork({ artwork, className, isVisible }: Pro
               )}
             </div>
           )}
-          <div className="startingPrice">Starting price: {startingPrice}</div>
+          <div>
+            <div className="auctionType">To be auction via {artwork.auctionType} bidding</div>
+            <div className="startingPrice">Starting price: {startingPrice}</div>
+          </div>
         </div>
       </div>
     </div>
