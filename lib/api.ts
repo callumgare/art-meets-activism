@@ -115,7 +115,6 @@ export async function getSiteInfo(): Promise<SiteInfo> {
           SiteInfo {
             footerText
             headerInfoText
-            eventDate
           }
         }
       }
@@ -129,7 +128,6 @@ export async function getSiteInfo(): Promise<SiteInfo> {
     cmsUrl: data?.generalSettings?.url,
     footerText: data?.allSiteInfo.nodes?.[0].SiteInfo.footerText,
     headerInfoText: data?.allSiteInfo.nodes?.[0].SiteInfo.headerInfoText,
-    eventDate: data?.allSiteInfo.nodes?.[0].SiteInfo.eventDate,
   })
 }
 
