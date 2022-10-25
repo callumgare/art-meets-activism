@@ -192,7 +192,7 @@ export default function RenderHTMLContent({ children, artists, artworks }: Props
         if (child.type === 'text') {
           child.data = child.data.replaceAll(/\[countDown[^\]]*\]/g, (countDownShortcode) => {
             const options = Object.fromEntries(
-              Array.from(countDownShortcode.matchAll(/(\w+)="([^"]+)"/g)).map(([, key, value]) => [key, value])
+              Array.from(countDownShortcode.matchAll(/(\w+)=["”]([^"″”]+)["″”]/g)).map(([, key, value]) => [key, value])
             )
             const currentDate = startOfDay(new Date())
             const countDownDate = startOfDay(new Date(options.date))
@@ -204,11 +204,11 @@ export default function RenderHTMLContent({ children, artists, artworks }: Props
             const comparedDates = compareAsc(currentDate, countDownDate)
             const durationFormatted = formatDistance(currentDate, countDownDate)
             if (comparedDates === -1) {
-              return options.beforeEvent.replace('%d', durationFormatted)
+              return options.beforeEvent?.replace('%d', durationFormatted) || durationFormatted
             } else if (comparedDates === 0) {
-              return options.onEvent.replace('%d', durationFormatted)
+              return options.onEvent?.replace('%d', durationFormatted) || durationFormatted
             } else if (comparedDates === 1) {
-              return options.afterEvent.replace('%d', durationFormatted)
+              return options.afterEvent?.replace('%d', durationFormatted) || `${durationFormatted} ago`
             }
             return ''
           })
