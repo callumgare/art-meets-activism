@@ -169,6 +169,7 @@ export async function getArtworks(): Promise<Artwork[]> {
             startingPrice
             statement
             auctionType
+            auctionUrl
             artist {
               ... on Artist {
                 id
@@ -194,6 +195,7 @@ export async function getArtworks(): Promise<Artwork[]> {
     },
     startingPrice: wpArtwork.artwork.startingPrice ?? 0, // startingPrice is a required field so every artwork should have a starting price but wordpress returns 0 as null for some reason
     auctionType: wpArtwork.artwork.auctionType,
+    auctionURL: wpArtwork.artwork.auctionUrl,
     statement: wpArtwork.artwork.statement,
     artists: wpArtwork.artwork.artist,
   }))

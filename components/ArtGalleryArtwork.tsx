@@ -141,6 +141,8 @@ export default function ArtGalleryArtwork({ artwork, className, isVisible }: Pro
   const [statementOverflowHidden, setStatementOverflowHidden] = useState(false)
   const rootElm = useRef<HTMLDivElement>(null)
 
+  const auctionTypeText = `To be auctioned via ${artwork.auctionType} bidding`
+
   useEffect(() => {
     const statementElm = rootElm.current?.querySelector('.statement')
     if (statementElm) {
@@ -193,7 +195,15 @@ export default function ArtGalleryArtwork({ artwork, className, isVisible }: Pro
             </div>
           )}
           <div>
-            <div className="auctionType">To be auctioned via {artwork.auctionType} bidding</div>
+            <div className="auctionType">
+              {artwork.auctionURL ? (
+                <a href={artwork.auctionURL} target="_blank" rel="noreferrer">
+                  {auctionTypeText}
+                </a>
+              ) : (
+                auctionTypeText
+              )}
+            </div>
             <div className="startingPrice">Starting price: {startingPrice}</div>
           </div>
         </div>
